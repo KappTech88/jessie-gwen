@@ -23,9 +23,9 @@ export function AnimatedButton({
   const baseStyles = 'inline-flex items-center justify-center gap-2 rounded-full font-semibold transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed';
 
   const variantStyles = {
-    primary: 'bg-[var(--color-primary)] text-white hover:shadow-lg hover:shadow-[var(--color-primary)]/30',
+    primary: 'bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white hover:shadow-lg hover:shadow-[var(--color-primary)]/30 hover:brightness-110',
     secondary: 'bg-[var(--color-secondary)] text-white hover:shadow-lg hover:shadow-[var(--color-secondary)]/30',
-    outline: 'border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white',
+    outline: 'border-2 border-[var(--color-border)] text-[var(--color-text-primary)] hover:border-[var(--color-primary)] hover:text-[var(--color-primary)]',
   };
 
   const sizeStyles = {
@@ -36,8 +36,8 @@ export function AnimatedButton({
 
   return (
     <motion.button
-      whileHover={prefersReducedMotion ? {} : { scale: 1.05 }}
-      whileTap={prefersReducedMotion ? {} : { scale: 0.95 }}
+      whileHover={prefersReducedMotion ? {} : { scale: 1.03 }}
+      whileTap={prefersReducedMotion ? {} : { scale: 0.97 }}
       transition={{
         type: 'spring',
         stiffness: 400,

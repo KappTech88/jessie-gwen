@@ -1,17 +1,9 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "@/components/ui/Navigation";
 import { Footer } from "@/components/ui/Footer";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
 import { ErrorBoundary } from "@/components/ErrorBoundary";
-
-const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-plus-jakarta",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Jessie Gwen Fitness | Free Home Workouts for Stronger Women",
@@ -43,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={plusJakarta.variable}>
+    <html lang="en">
       <body className="antialiased">
         <ErrorBoundary>
           <SmoothScroll>
