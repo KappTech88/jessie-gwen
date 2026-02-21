@@ -124,7 +124,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <AnimatedSection variant="fadeUp">
             <div className="max-w-6xl mx-auto mb-12">
-              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+              <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
                 <div>
                   <div className="inline-block px-3 py-1 rounded-full bg-[var(--color-secondary)]/10 text-[var(--color-secondary)] text-sm font-semibold mb-4">
                     Workout Library
@@ -224,7 +224,7 @@ export default function HomePage() {
       {/* Contact Section — With Form */}
       <section id="contact" className="py-24 bg-[var(--color-surface)]">
         <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
               {/* Left — Info */}
               <AnimatedSection variant="fadeUp">
@@ -276,7 +276,7 @@ export default function HomePage() {
 
               {/* Right — Contact Form */}
               <AnimatedSection variant="fadeUp" delay={0.15}>
-                <div className="p-8 rounded-2xl bg-[var(--color-background)] border border-[var(--color-border)] gradient-border">
+                <div className="p-8 rounded-2xl bg-[var(--color-background)] gradient-border">
                   <form onSubmit={handleContactSubmit} className="space-y-5">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
