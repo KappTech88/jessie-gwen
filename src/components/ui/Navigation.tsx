@@ -15,11 +15,19 @@ export function Navigation() {
   const { toggleTheme, isDark } = useTheme();
   const { scrollY } = useScroll();
 
-  const backgroundColor = useTransform(
+  const bgColorLight = useTransform(
     scrollY,
     [0, 100],
     ['rgba(250, 250, 250, 0)', 'rgba(250, 250, 250, 0.9)']
   );
+
+  const bgColorDark = useTransform(
+    scrollY,
+    [0, 100],
+    ['rgba(15, 15, 26, 0)', 'rgba(15, 15, 26, 0.9)']
+  );
+
+  const backgroundColor = isDark ? bgColorDark : bgColorLight;
 
   const backdropBlur = useTransform(
     scrollY,
@@ -27,7 +35,7 @@ export function Navigation() {
     ['blur(0px)', 'blur(16px)']
   );
 
-  const borderOpacity = useTransform(scrollY, [0, 100], [0, 0.1]);
+  const borderOpacity = useTransform(scrollY, [0, 100], [0, isDark ? 0.2 : 0.1]);
 
   // Track active section via IntersectionObserver
   useEffect(() => {
