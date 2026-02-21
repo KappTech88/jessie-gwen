@@ -1,6 +1,6 @@
 'use client';
 
-import { Youtube, Instagram, Heart } from 'lucide-react';
+import { Youtube, Instagram } from 'lucide-react';
 import { AnimatedSection } from '@/components/animations/AnimatedSection';
 
 export function Footer() {
@@ -8,21 +8,29 @@ export function Footer() {
 
   return (
     <AnimatedSection variant="fadeIn">
-      <footer className="bg-[var(--color-text-primary)] text-white py-12 mt-20">
+      <footer className="relative bg-[#0F0F1A] text-white pt-16 pb-8">
+        {/* Gradient top border */}
+        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent" />
+
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
             {/* Brand */}
-            <div>
-              <h3 className="text-2xl font-bold mb-3 text-gradient">Jessie Gwen</h3>
-              <p className="text-gray-400 mb-4">
-                Your go-to trainer for home workouts that actually work. Building stronger, more confident women, one workout at a time.
+            <div className="lg:col-span-1">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-secondary)] flex items-center justify-center">
+                  <span className="text-white font-bold text-sm">JG</span>
+                </div>
+                <span className="text-xl font-bold text-gradient">Jessie Gwen</span>
+              </div>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Your go-to trainer for home workouts that actually work. Building stronger, more confident women.
               </p>
             </div>
 
             {/* Quick Links */}
             <div>
-              <h4 className="font-semibold mb-3 text-[var(--color-accent)]">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider text-gray-300">Quick Links</h4>
+              <ul className="space-y-3 text-sm text-gray-400">
                 <li>
                   <a href="#videos" className="hover:text-white transition-colors">
                     Free Workouts
@@ -51,43 +59,61 @@ export function Footer() {
               </ul>
             </div>
 
-            {/* Social & Contact */}
+            {/* Connect */}
             <div>
-              <h4 className="font-semibold mb-3 text-[var(--color-accent)]">Connect</h4>
+              <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider text-gray-300">Connect</h4>
               <div className="flex gap-3 mb-4">
                 <a
                   href="https://www.youtube.com/@JessieGwen"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary)]/80 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-br hover:from-[var(--color-primary)] hover:to-[var(--color-secondary)] flex items-center justify-center transition-all"
                   aria-label="YouTube"
                 >
-                  <Youtube className="w-6 h-6" />
+                  <Youtube className="w-5 h-5" />
                 </a>
                 <a
                   href="https://www.instagram.com/jessiegwenfitness"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-12 h-12 rounded-full bg-[var(--color-secondary)] hover:bg-[var(--color-secondary)]/80 flex items-center justify-center transition-colors"
+                  className="w-10 h-10 rounded-xl bg-white/5 hover:bg-gradient-to-br hover:from-[var(--color-secondary)] hover:to-[var(--color-primary)] flex items-center justify-center transition-all"
                   aria-label="Instagram"
                 >
-                  <Instagram className="w-6 h-6" />
+                  <Instagram className="w-5 h-5" />
                 </a>
               </div>
-              <p className="text-gray-400 text-sm">
-                Serving: Atlanta, Alpharetta, Roswell, Sandy Springs, Buckhead
+              <p className="text-gray-500 text-xs">
+                Atlanta &bull; Alpharetta &bull; Roswell &bull; Sandy Springs
               </p>
+            </div>
+
+            {/* Newsletter */}
+            <div>
+              <h4 className="font-semibold mb-4 text-sm uppercase tracking-wider text-gray-300">Stay Updated</h4>
+              <p className="text-sm text-gray-400 mb-3">Get notified about new workouts and tips.</p>
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="flex gap-2"
+              >
+                <input
+                  type="email"
+                  placeholder="your@email.com"
+                  className="flex-1 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 text-white text-sm placeholder:text-gray-500 focus:outline-none focus:ring-1 focus:ring-[var(--color-primary)] focus:border-transparent"
+                />
+                <button
+                  type="submit"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-secondary)] text-white text-sm font-semibold hover:shadow-lg hover:shadow-[var(--color-primary)]/25 transition-shadow"
+                >
+                  Join
+                </button>
+              </form>
             </div>
           </div>
 
           {/* Bottom Bar */}
-          <div className="border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-            <p>
-              © {currentYear} Jessie Gwen Fitness. All rights reserved.
-            </p>
-            <p className="flex items-center gap-2">
-              Made with <Heart className="w-4 h-4 text-[var(--color-primary)] fill-current" /> for strong women
-            </p>
+          <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-500">
+            <p>&copy; {currentYear} Jessie Gwen Fitness. All rights reserved.</p>
+            <p>Designed with purpose for strong women everywhere.</p>
           </div>
         </div>
       </footer>

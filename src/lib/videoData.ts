@@ -1,10 +1,45 @@
+export type Difficulty = 'beginner' | 'intermediate' | 'intense';
+
 export interface Video {
   id: string;
   url: string;
   title: string;
   thumbnail: string;
   duration?: string;
+  difficulty?: Difficulty;
   description?: string;
+}
+
+// Parse duration from video title
+function parseDuration(title: string): string | undefined {
+  const lower = title.toLowerCase();
+  const match = lower.match(/(\d+)\s*min/);
+  if (match) return `${match[1]} min`;
+  const minuteMatch = lower.match(/(\d+)\s*minute/);
+  if (minuteMatch) return `${minuteMatch[1]} min`;
+  if (lower.includes('under 10')) return '10 min';
+  return undefined;
+}
+
+// Parse difficulty from video title
+function parseDifficulty(title: string): Difficulty {
+  const lower = title.toLowerCase();
+  if (lower.includes('beginner') || lower.includes('easy') || lower.includes('everyday') || lower.includes('side-lying')) {
+    return 'beginner';
+  }
+  if (lower.includes('intense') || lower.includes('insanely') || lower.includes('extreme') || lower.includes('explosive') || lower.includes('major') || lower.includes('maximum') || lower.includes('fire')) {
+    return 'intense';
+  }
+  return 'intermediate';
+}
+
+// Add metadata to a video entry
+function enrichVideo(video: Video): Video {
+  return {
+    ...video,
+    duration: video.duration || parseDuration(video.title),
+    difficulty: video.difficulty || parseDifficulty(video.title),
+  };
 }
 
 // Parse YouTube video ID from URL
@@ -246,4 +281,4 @@ export const workoutVideos: Video[] = [
     title: 'Booty Lifting Workout at Home - Floor Only, No Equipment',
     thumbnail: getYouTubeThumbnail('90KI63D4lu8', 'high'),
   },
-];
+].map(enrichVideo);
